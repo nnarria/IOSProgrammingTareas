@@ -7,7 +7,7 @@
 ## access and modify attributes
 
 makeCacheMatrix <- function(x = matrix()) {
-				minv <- NULL
+	minv <- NULL
         set <- function(y) {
                 x <<- y
                 minv <<- NULL
@@ -25,13 +25,13 @@ makeCacheMatrix <- function(x = matrix()) {
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
-				minv <- x$getminverse()
+	minv <- x$getminverse()
         if(!is.null(minv)) {
                 message("getting cached data")
                 return(minv)
         }
         data <- x$get()
-        minv <- solve(data)
+        minv <- solve(data, ...)
         x$setminverse(minv)
         minv
 }
